@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const applicationId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+const applicationId = "69cb39b3-f403-4a23-bb5d-3b282eddd6c4";
 const url =
   process.env.API_URL || " https://goldfish-app-fbulw.ondigitalocean.app";
 

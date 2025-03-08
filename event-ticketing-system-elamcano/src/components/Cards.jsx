@@ -17,7 +17,7 @@ const Cards = () => {
       .catch((err) => console.error(err));
   }, []);
   return (
-    <div className=" p-4 rounded-xl flex flex-row justify-around">
+    <div className=" p-4 rounded-xl flex flex-row justify-around flex-wrap gap-4">
       {events.length ? (
         events.map((event, index) => (
           <Link href={`/${event.id}`} key={index}>
