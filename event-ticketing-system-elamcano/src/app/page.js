@@ -1,10 +1,16 @@
 import Cards from "@/components/Cards";
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="bg-slate-800">
+    <div className="flex flex-col gap-10">
       <Cards />
+      <Link
+        href={"/history"}
+        className="p-4 self-end bg-slate-400 mr-20 rounded-xl"
+      >
+        Go to history
+      </Link>
     </div>
   );
 }
