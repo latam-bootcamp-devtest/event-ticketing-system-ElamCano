@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
+import Link from "next/link";
 
 const url =
   process.env.API_URL || " https://goldfish-app-fbulw.ondigitalocean.app";
@@ -17,15 +18,22 @@ const Cards = () => {
   }, []);
   return (
     <div className=" p-4 rounded-xl flex flex-row justify-around">
-      {events?.map((event, index) => (
-        <Card
-          name={event.name}
-          date={event.date}
-          price={event.price}
-          image={event.image}
-          key={index}
-        />
-      ))}
+      {events.length ? (
+        events.map((event, index) => (
+          <Link href={`/${event.id}`} key={index}>
+            <Card
+              name={event.name}
+              date={event.date}
+              price={event.price}
+              image={event.image}
+            />
+          </Link>
+        ))
+      ) : (
+        <h1 className="font-bold text-4xl text-amber-100">
+          No Events available
+        </h1>
+      )}
     </div>
   );
 };
