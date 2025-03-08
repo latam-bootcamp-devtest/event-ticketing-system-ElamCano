@@ -1,4 +1,5 @@
 "use client";
+import TicketForm from "@/components/TicketForm";
 import axios from "axios";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -11,6 +12,7 @@ const appId = process.env.APP_ID || "69cb39b3-f403-4a23-bb5d-3b282eddd6c4";
 const Detail = () => {
   const { id } = useParams();
   const [event, setEvent] = useState({});
+  const [form, setForm] = useState(false);
   useEffect(() => {
     axios
       .get(`${url}/Event/${id}?applicationId=${appId}`)
@@ -57,8 +59,21 @@ const Detail = () => {
             <h3 className="text-xl">
               <span className="font-bold">Price: </span> {event.price}
             </h3>
-            <button className="w-fit bg-amber-50 text-black rounded-xl p-4 font-bold hover:bg-green-400 duration-300 cursor-pointer text-2xl">
-              Book ticket
+            {form && (
+              <TicketForm
+                price={event.price}
+                date={event.date}
+                location={event.location}
+                image={event.image}
+              />
+            )}
+            <button
+              onClick={() => setForm(!form)}
+              className={`${
+                form ? "bg-red-400 text-white font-medium" : ""
+              } w-fit bg-amber-50 text-black rounded-xl p-4 font-bold hover:bg-green-400 duration-300 cursor-pointer text-2xl`}
+            >
+              {form ? "Cancel" : "Book ticket"}
             </button>
           </div>
         </div>
