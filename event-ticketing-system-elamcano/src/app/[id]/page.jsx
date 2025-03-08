@@ -65,6 +65,7 @@ const Detail = () => {
                 date={event.date}
                 location={event.location}
                 image={event.image}
+                id={event.id}
               />
             )}
             <button

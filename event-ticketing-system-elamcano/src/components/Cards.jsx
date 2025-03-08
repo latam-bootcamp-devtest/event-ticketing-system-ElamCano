@@ -26,6 +26,8 @@ const Cards = () => {
               date={event.date}
               price={event.price}
               image={event.image}
+              event={true}
+              id={event.id}
             />
           </Link>
         ))

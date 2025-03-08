@@ -5,8 +5,10 @@ import React, { useEffect, useState } from "react";
 const applicationId = "69cb39b3-f403-4a23-bb5d-3b282eddd6c4";
 const url =
   process.env.API_URL || " https://goldfish-app-fbulw.ondigitalocean.app";
+const appId = "69cb39b3-f403-4a23-bb5d-3b282eddd6c4";
+const userId = "beb79a8e-4aa3-444e-966d-d9827e47bda1";
 
-const TicketForm = ({ price, date, image, location }) => {
+const TicketForm = ({ price, id }) => {
   const [tickets, setTickets] = useState(0);
   const [name, setName] = useState("");
   const [success, setSuccess] = useState(false);
@@ -26,15 +28,15 @@ const TicketForm = ({ price, date, image, location }) => {
     e.preventDefault();
     const newTicket = {
       applicationId: applicationId,
-      name: name,
-      date: date,
-      image: image,
-      price: tickets * price,
-      location: location,
+
+      userId: userId,
+      eventId: id,
+      ticketQuantity: tickets,
+      customerName: name,
     };
 
     axios
-      .post(`${url}/Event`, newTicket, {
+      .post(`${url}/Booking`, newTicket, {
         headers: {
           "Content-Type": "application/json",
         },
